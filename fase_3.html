@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ROOT ROUND</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  <script src="https://unpkg.com" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body>
+  <div class="content-padding">
+    <h1 id="page-title">ROOT ROUND</h1>
+    <p>your joyful daily adventure to <mark>reboot</mark> the brain</p>
+    <p>are you <strong>ready?</strong></p>
+    
+    <h2>How does it work?</h2>
+    <ul class="steps-list">
+      <div class="card" data-numstep="1" data-role="step">
+        <h2 class="step">#1</h2>
+        <li>receive the challenge of the day</li>
+      </div>
+      <div class="card" data-numstep="2">
+        <h2 class="numstep">#2</h2>
+        <li>go out to find the right plant</li>
+      </div>
+      <div class="card" data-numstep="3">
+        <h2 class="numstep">#3</h2>
+        <li>open the app</li>
+      </div>
+      <div class="card" data-numstep="4">
+        <h2 class="numstep">#4</h2>
+        <li>point the camera to the plant</li>
+      </div>
+      <div class="card" data-numstep="5">
+        <h2 class="numstep">#5</h2>
+        <li>does it match? Challenge completed!</li>
+      </div>
+    </ul>
+    
+    <p>you have 24h from the time the challenge started to complete it, if you don't find the right plant, don't worry, the ones you scanned during the activity will go to your bank of happy discoveries, where you can mark on the community map where they are, so you and everyone else can find it in the future :)</p>
+    
+    <div id="map"></div>
+    
+    <button onclick="document.getElementById('id01').style.display='block'">START</button>
+  </div>
+
+  <!-- Modal / Login Box -->
+  <div id="id01" class="modal">
+    <form class="modal-content animate" action="#" method="post">
+      <div class="imgcontainer">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+        <img src="https://gstatic.com" alt="Avatar" class="avatar">
+      </div>
+
+      <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" required>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+          
+        <button type="submit">Login</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+        <p>not yet part of the community?</p>
+        <p><a href="https://youtube.com" target="_blank">Sign up now!</a></p>
+      </div>
+
+      <div class="container" style="background-color:#f1f1f1">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        <span class="psw">Forgot <a href="#">password?</a></span>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Initialize map
+    var map = L.map('map').setView([48.2082, 16.3738], 13);
+
+    // Fixed OpenStreetMap tile URL format
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a>'
+    }).addTo(map);
+
+    var marker = L.marker([48.2082, 16.3738]).addTo(map);
+    marker.bindPopup("<b>Hello!</b><br>This is your interactive map.").openPopup();
+
+    // Modal close handling
+    var modal = document.getElementById('id01');
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+  </script>
+</body>
+</html>
